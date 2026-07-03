@@ -1,8 +1,8 @@
 import os
 
-folder = r"C:\Users\😴\OneDrive\Desktop\Photos"
+folder = input("Enter the folder path: ")
 image_extensions = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"}
-
+Name=input("Enter the new name prefix (e.g., 'Dev'): ")
 files = sorted(
     f for f in os.listdir(folder)
     if os.path.splitext(f)[1].lower() in image_extensions
@@ -22,11 +22,11 @@ for i, file in enumerate(files):
     temp_files.append(temp_name)
 
 # Pass 2: Rename to final names
-start = 7
+start = int(input("Enter the starting number for the new names: "))
 
 for i, temp_name in enumerate(temp_files, start=start):
     ext = os.path.splitext(temp_name)[1]
-    final_name = f"Dev{i}{ext}"
+    final_name = f"{Name}{i}{ext}"
 
     os.rename(
         os.path.join(folder, temp_name),
